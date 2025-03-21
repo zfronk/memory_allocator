@@ -117,6 +117,7 @@ int main(){
             }
 
             printf("\n");
+
             
             is_prompting = false;
             free(array);
