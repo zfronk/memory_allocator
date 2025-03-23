@@ -7,6 +7,7 @@
 
 int main(){
 
+	// Boolen to act as switch
     bool is_prompting = true; 
 
     while(is_prompting){
@@ -26,7 +27,7 @@ int main(){
 
         ungetc(check_for_newline, stdin); // If not enter put back character
 
-        // Capture invalid data
+        // Invalid data
         if (scanf("%d", &num_of_elements) != 1) {
             while(getchar() != '\n');
             printf("Invalid input. Please enter a number.\n");
@@ -34,10 +35,10 @@ int main(){
             continue;
         }
 
-        // VALID
+        // Is valid
         else{
             getchar(); // remove newline
-            printf("Adding %d elements\n", num_of_elements);
+            printf("Adding %d elements!\n", num_of_elements);
             printf("\n");
 
             // Allocate memory
@@ -50,16 +51,16 @@ int main(){
 
             }
 
+			int *temp_mem = array; // Store array memory address
             printf("Memory allocation passed!\n");
-            printf("Memory address of array: %p\n", array);
+            printf("Memory address of the first element in the array: %p\n", array);
 
+			printf("\n");
 
-            printf("\nAllocate values to store in memory\n");
-            printf("------------------------------------\n");
+            printf("Allocate values to store in memory\n");
+            printf("++++++++++++++++++++++++++++++++++\n");
 
-            
-            
-            // Loop to take input of elements // Loops num_of_elements times
+           	// Loop to take input of elements // Loops num_of_elements times
             int i = 0;
             
             while(i < num_of_elements){
@@ -72,6 +73,7 @@ int main(){
 
                     char check_character = getchar();
                     char enter = '\n';
+                    int value;
 
                     if(check_character == enter){ // If enter remove the character
                         printf("You pressed enter!\n");
@@ -83,7 +85,7 @@ int main(){
                     ungetc(check_character, stdin); // Put the character back in the input buffer
 
                     // Invalid input
-                    if(scanf("%d", array + i) != 1){
+                    if(scanf("%d", &value) != 1){
                         while(getchar() != '\n'); // Remove invalid input
                         printf("Invalid input. Please enter a number!\n");
                         printf("\n");
@@ -91,15 +93,21 @@ int main(){
 
                     }
 
-                    while(getchar() != '\n'); // Remove newline
-                    
-                    i++; // Move to next element
-
-                    // Stop when numbers reached
-                    if(i == num_of_elements){
-                        prompting_values = false;
-
+                    else{
+                    	while(getchar() != '\n'); // Remove newline
+                    	
+                    	*temp_mem = value; // Paste to memory
+                    	temp_mem++; // Move pointer
+                    	i++; // Incerement
+                    	
+                    	// Stop when numbers reached
+                    	if(i == num_of_elements){
+                        	prompting_values = false;
+                    	
+    	           		}
                     }
+
+                    
                 }
                 
                 
@@ -108,21 +116,36 @@ int main(){
 
 
             printf("\nDone taking records\n");
+            temp_mem = array; // Restore pointer
 
 
             // Print records
             printf("\nValues stored: ");
             for(int i = 0; i < num_of_elements; i++ ){
-                printf("%d ", *(array + i));
+                printf("%d ", *(temp_mem++)); // Derefrence
 
             }
 
             printf("\n");
 
+            temp_mem = array; // Restore the pointer 
+
+			int sum = 0;
+            printf("Sum of the values: ");
+
+			for(int i = 0; i < num_of_elements; i++){
+				sum += *(temp_mem);
+				temp_mem++; // Move the pointer 
+				
+			}
+
+			printf("%d\n", sum);
+
+			printf("\n");
             
-            is_prompting = false;
-            free(array);
+            free(array); // Free memory
             printf("Memory freed!\n");
+			is_prompting = false; // Exit loop
             
             
             

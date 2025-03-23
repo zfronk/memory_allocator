@@ -1,56 +1,73 @@
-# Memory Allocator in C
+# Dynamic Array Input & Sum Calculator
 
-## Overview
-This project is a simple **memory allocator in C** that dynamically allocates memory for an array, takes user input, stores values, and prints them before freeing the allocated memory. It also includes error handling for invalid input and memory allocation failures.
+A C program that dynamically allocates memory for an array, allows user input validation, and calculates the sum of elements.
 
-## Features
-- Prompts the user to enter the number of elements.
-- Dynamically allocates memory using `malloc()`.
-- Handles invalid input (e.g., pressing Enter or entering non-numeric values).
-- Stores and prints integer values.
-- Properly frees allocated memory to prevent memory leaks.
+## 📌 Features
+- Dynamically allocates memory based on user input.
+- Handles invalid input and prevents crashes.
+- Displays stored values and computes their sum.
+- Properly frees allocated memory to prevent leaks.
 
-## Compilation & Execution
-### **Compile:**
-```bash
-gcc -o run.exe mem.c
+## 🚀 Getting Started
+
+### **Prerequisites**
+- A C compiler (GCC recommended)
+- A Unix-like terminal (Linux/macOS) or MinGW (Windows)
+
+### **Installation & Compilation**
+Clone the repository and compile the program using GCC:
+
+```sh
+git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
+cd YOUR_REPO
+gcc -o run.exe memory_allocater.c
 ```
 
-### **Run:**
-```bash
+### **Usage**
+Run the compiled program:
+
+```sh
 ./run.exe
 ```
 
-## Example Output
+Then, follow the prompts to:
+1. Enter the number of elements.
+2. Input integer values.
+3. See the stored values and their sum.
+
+### **Example**
 ```
 Enter number of elements in array: 3
-Adding 3 elements
+Adding 3 elements!
 
-Memory allocation passed!
-Memory address of array: 0x5933d58bcac0
+Memory allocation successful!
+Memory address of the first element: 0x600003db0020
 
 Allocate values to store in memory
-------------------------------------
-Enter value for element 1: 10
-Enter value for element 2: 20
-Enter value for element 3: 30
+++++++++++++++++++++++++++++++++++
+Enter value for element 1: 5
+Enter value for element 2: 10
+Enter value for element 3: 15
 
-Done taking records
+Values stored: 5 10 15
+Sum of the values: 30
 
-Values stored: 10 20 30
 Memory freed!
 ```
 
-## Code Explanation
-- Uses a `while` loop to prompt the user until valid input is received.
-- Implements pointer arithmetic (`*(array + i)`) to access elements dynamically.
-- Ensures safe memory handling by storing the allocated pointer and freeing it at the end.
+## ⚡ Contributing
+Pull requests are welcome! If you’d like to contribute:
+1. Fork the repo.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Commit changes (`git commit -m "Added new feature"`).
+4. Push to the branch (`git push origin feature-branch`).
+5. Open a pull request.
 
-## Future Enhancements
-- Implement error logging.
-- Add support for floating-point numbers.
-- Use `calloc()` for zero-initialized memory allocation.
+## 🐜 License
+This project is open-source and available under the [MIT License](LICENSE).
 
-## License
-This project is licensed under the MIT License.
+## 📝 Contact
+If you have any questions, feel free to reach out:
+- GitHub: [zfronk](https://github.com/zfronk)
+- Email: ###
 
